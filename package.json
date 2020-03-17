@@ -1,0 +1,23 @@
+{
+  "name": "inventario-de-midias",
+  "version": "1.0.0",
+  "description": "1º trabalho da disciplina Linguagens de Programação (2020/1)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtilioA/inventario-de-midias.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AtilioA/inventario-de-midias/issues"
+  },
+  "homepage": "https://github.com/AtilioA/inventario-de-midias#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0"
+  }
+}
