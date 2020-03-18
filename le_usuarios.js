@@ -22,8 +22,12 @@ function leArquivoUsuarios(caminhoArquivoUsuario) {
             nome: separalinha[2]
         });
     }
-    console.log(usuarios);
+    return usuarios;
+    // console.log(usuarios);
 }
 
 const caminhoArquivoUsuario = 'entradas/usuarios.csv';
 leArquivoUsuarios(caminhoArquivoUsuario);
+
+
+module.exports = leArquivoUsuarios;
