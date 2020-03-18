@@ -1,12 +1,12 @@
 "use strict"; // evitar más práticas
 // Módulo File System para leitura de arquivos
 const fs = require('fs');
-const leArquivoUsuarios = require('../le_usuarios');
-const caminhoArquivoUsuario = 'entradas/usuarios.csv';
 const { Genero } = require("./Midia.js");
 const Artista = require("./Artista.js");
 const Podcaster = require("./Podcaster.js");
 const Assinante = require("./Assinante.js");
+const Podcast = require('./Podcast');
+const Musica = require('./Musica');
 
 
 class PlataformaDigital {
@@ -149,6 +149,62 @@ class PlataformaDigital {
         }
         console.log(codigosFavoritos);
         console.log(midiasFavoritadas);
+    }
+
+    leArquivoMidias(caminhoArquivoMidia){
+         // Cria string ao ler arquivo CSV local
+         var midiasCSV = fs.readFileSync(caminhoArquivoMidia, 'utf8');
+
+         // Separa string do csv em quebras de linha
+         midiasCSV = midiasCSV.split("\n");
+ 
+         // Remove primeiro (header do csv) e último elemento (\n)
+         midiasCSV.shift();
+         midiasCSV.pop();
+ 
+         // midiasCSV agora possui apenas os usuários a serem cadastrados
+         for (let index in midiasCSV){
+            let separaLinha = midiasCSV[index].split(';');
+            let id = separaLinha[0].trim();
+            let nome = separaLinha[1].trim();
+            let tipo = separaLinha[2].trim();
+            let produtores = (separaLinha[3].trim()).split(',');
+            let duracao = separaLinha[4].trim();
+            duracao = duracao.replace(',', '.');
+            let genero = separaLinha[5].trim();
+            if (genero.length !== 2){
+                genero = (genero.split(','))[0];
+            }
+            let temporada = separaLinha[6].trim();
+            let album = separaLinha[7].trim();
+            let albumId = separaLinha[8].trim();
+            let ano = separaLinha[9].trim();
+            
+            var produto;
+            switch (tipo){
+                case 'P':
+                    produto = new Podcast(
+                        id,
+                        nome,
+                        genero,
+                        temporada,
+                        duracao,
+                        ano
+                    );
+                    break;
+                case 'M':
+                    produto = new Musica(
+                        nome,
+                        id,
+                        genero,
+                        duracao,
+                        ano);
+                    break;
+            }
+            produto.setProdutor(produtores);
+            this.produtosCadastrados.push(produto);
+         }
+         console.log(this.produtosCadastrados);
     }
 }
 

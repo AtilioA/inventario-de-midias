@@ -63,7 +63,7 @@ spotifyzada.imprimeUsuarios();
 // console.log("\nProdutores:\n");
 // spotifyzada.imprimeProdutores();
 console.log("\nCarregando mídias...\n");
-// // spotifyzada.carregaArquivoMidias(fileMidia);
+spotifyzada.leArquivoMidias(arquivoMidias);
 // console.log("Mídias OK!\n");
 
 console.log("Carregando favoritos...\n");
