@@ -6,7 +6,7 @@ function leArquivoGeneros(caminhoArquivoGenero) {
     var generosCSV = fs.readFileSync(caminhoArquivoGenero, 'utf8');
 
     // Separa string do csv em quebras de linha
-    generosCSV = generosCSV.split("\r\n");
+    generosCSV = generosCSV.split("\n");
 
     // Remove primeiro (header do csv) e último elemento (\n)
     generosCSV.shift();

@@ -8,7 +8,7 @@ function leArquivoFavoritos(caminhoArquivoFavorito) {
     var favoritosCSV = fs.readFileSync(caminhoArquivoFavorito, 'utf8');
 
     // Separa string do csv em quebras de linha
-    favoritosCSV = favoritosCSV.split("\r\n");
+    favoritosCSV = favoritosCSV.split("\n");
 
     // Remove primeiro (header do csv) e último elemento (\n)
     favoritosCSV.shift();
