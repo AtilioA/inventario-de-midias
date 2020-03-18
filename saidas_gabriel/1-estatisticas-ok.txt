@@ -1,0 +1,42 @@
+Horas Consumidas: 6447,91 minutos	
+
+Gênero mais ouvido: Sertanejo - 149,97 minutos
+
+Mídias por Gêneros:
+Sertanejo:51	
+Funk:43	
+Rock:39	
+Geek:30	
+Hip-Hop:29	
+Indie:26	
+Atualidades:26	
+Eletrônica25	
+Pop:17	
+Noticias:14
+K-Pop:5
+Blues:0
+Rap:0
+
+Top 10 Mídias:		
+Queen of California:Rock:6
+Changing:Rock:6
+Shades Of Cool:Indie:6
+NerdCash 15 - Objetivos e consciência financeira:Geek:6
+NerdTech 42 - Tecnologias da corrida espacial:Geek:6
+Gordox // POUCAS #38:Atualidades:6
+Credo que delicia:Funk:6
+#253 - Luí­sa Sonza: diva sensata do pop:Pop:6
+O Assunto #19: Dinheiro para campanhas eleitorais:Notícias:6
+Something Like Olivia:Rock:5
+
+Top 10 Produtores:
+John Mayer;39
+Alexandre Ottoni;30
+Deive Pazos;30
+MC Kevinho;27
+Caue Moura;26
+Lana Del Rey;25
+Wesley Safadão;23
+Lil Nas X;19
+MC Livinho;16
+Allok;15
