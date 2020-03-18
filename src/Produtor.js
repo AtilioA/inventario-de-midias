@@ -4,10 +4,6 @@ const Usuario = require("./Usuario.js");
 
 class Produtor extends Usuario {
     constructor(nome, codigo) {
-        // if (typeof nome != "undefined" && typeof codigo != "undefined") {
-        //     super(nome, codigo)
-        // }
-
         super(nome, codigo);
         this.produtosDesenvolvidos = [];
         this.favoritado = 0;
