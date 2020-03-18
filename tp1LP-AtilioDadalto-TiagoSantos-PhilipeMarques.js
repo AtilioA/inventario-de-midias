@@ -47,12 +47,13 @@ for (var i = 0; argumentos[i]; i++) {
 }
 
 var spotifyzada = new PlataformaDigital();
-console.log("\nPlataforma digital criada.\n");
+console.log("\nPlataforma digital criada.");
 
-console.log("\nCarregando gêneros...\n");
-// // spotifyzada.carregaArquivoGeneros(fileGen);
-// console.log("Gêneros OK!\n");
-// spotifyzada.imprimeGeneros();
+
+console.log("\nCarregando gêneros...");
+spotifyzada.leArquivoGeneros(gen);
+console.log("Gêneros OK!\n");
+spotifyzada.imprimeGeneros();
 
 console.log("Carregando usuários...\n");
 // // spotifyzada.carregaArquivoUsuarios(fileUser);
