@@ -76,7 +76,7 @@ console.log("Carregando favoritos...\n");
 // console.log("Relatório de estatísticas OK!\n");
 
 console.log("Gerando relatório de backup...\n");
-// // spotifyzada.geraRelatorioBackup();
+spotifyzada.geraRelatorioBackup();
 // console.log("Relatório de backup OK!\n");
 
 console.log("Gerando relatório de favoritos...\n");

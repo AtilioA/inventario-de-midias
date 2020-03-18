@@ -45,11 +45,23 @@ class PlataformaDigital {
         var stream = fs.createWriteStream("backup.txt");
         stream.once('open', (fd) => {
             //laço que varre usuarios e formata no padrão do backup
-            for (usuario in this.usuarios) {
+            for (let usuario in this.usuarios) {
                 let conteudo = this.usuarios[usuario];
-                stream.write(`${conteudo.id};${conteudo.nome}\n`);
+                stream.write(`${conteudo.codigo};${conteudo.nome}\n`);
             }
-
+            stream.write('\n\n');
+            for (let produto in this.produtosCadastrados){
+                let conteudo = this.produtosCadastrados[produto];
+                stream.write(`${conteudo.nome};${conteudo.tipo};${conteudo.duracao};${conteudo.genero};`);
+                switch(conteudo.tipo){
+                    case 'M':
+                        stream.write(`;${conteudo.album};${conteudo.anoLancamento}\n`);
+                        break;
+                    case 'P':
+                        stream.write(`${conteudo.temporada};;${conteudo.anoLancamento}\n`);
+                       break;
+                }
+            }
             //fim do arquivo
             stream.end();
         });
@@ -184,8 +196,9 @@ class PlataformaDigital {
             switch (tipo){
                 case 'P':
                     produto = new Podcast(
-                        id,
+                        tipo,
                         nome,
+                        id,
                         genero,
                         temporada,
                         duracao,
@@ -194,17 +207,18 @@ class PlataformaDigital {
                     break;
                 case 'M':
                     produto = new Musica(
+                        tipo,
                         nome,
                         id,
                         genero,
                         duracao,
                         ano);
+                    produto.setAlbum(albumId);
                     break;
             }
             produto.setProdutor(produtores);
             this.produtosCadastrados.push(produto);
          }
-         console.log(this.produtosCadastrados);
     }
 }
 

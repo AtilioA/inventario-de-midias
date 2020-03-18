@@ -73,7 +73,7 @@ class Genero {
 class Midia {
     static qtdProdutos = 0;
 
-    constructor(nome, codigo, genero, duracao, ano) {
+    constructor(tipo, nome, codigo, genero, duracao, ano, ti) {
         this.anoLancamento = ano;
         this.duracao = duracao;
         this.nome = nome;
@@ -81,6 +81,7 @@ class Midia {
         this.genero = genero;
         this.favoritado = 0;
         this.produtor = [];
+        this.tipo = tipo;
         Midia.qtdProdutos++;
     }
 

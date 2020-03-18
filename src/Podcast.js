@@ -3,8 +3,8 @@ const Midia = require("./Midia.js");
 
 
 class Podcast extends Midia {
-    constructor(nome, codigo, genero, qtdTemporadas, duracao, ano) {
-        super(nome, codigo, genero, duracao, ano);
+    constructor(tipo, nome, codigo, genero, qtdTemporadas, duracao, ano) {
+        super(tipo, nome, codigo, genero, duracao, ano);
         this.qtdTemporadas = qtdTemporadas;
     }
 

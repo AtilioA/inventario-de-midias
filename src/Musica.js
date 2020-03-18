@@ -3,8 +3,8 @@ const Midia = require("./Midia.js");
 
 
 class Musica extends Midia {
-    constructor(nome, codigo, genero, duracao, anoLancamento) {
-        super(nome, codigo, genero, duracao, anoLancamento);
+    constructor(tipo, nome, codigo, genero, duracao, anoLancamento) {
+        super(tipo, nome, codigo, genero, duracao, anoLancamento);
     }
 
     getAlbum() {
