@@ -246,12 +246,12 @@ class PlataformaDigital {
                 return 1;
             });
             for(let prods of this.produtoresCadastrados){
-                stream.write(`${prods.getNome()};${prods.getProdutosDesenvolvidos().sort((a, b) => {
+                stream.write(`${prods.getNome().replace(/(\r\n|\n|\r)/gm, "")};${prods.getProdutosDesenvolvidos().sort((a, b) => {
                     if(a.getNome() < b.getNome()){
                         return -1;
                     }
                     return 1;
-                }).map(elem => elem.getNome()).join(", ")}\n`);
+                }).map(elem => elem.getNome().replace(/(\r\n|\n|\r)/gm, "")).join(", ")}\n`);
             }
 
         });
