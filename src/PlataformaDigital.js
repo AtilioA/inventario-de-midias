@@ -44,7 +44,7 @@ class PlataformaDigital {
         // console.log(this.usuarios);
         var stream = fs.createWriteStream("backup.txt");
         stream.once('open', () => {
-            //laço que varre usuarios e formata no padrão do backup
+            // Laço que varre usuarios e formata no padrão do backup
             for (let usuario in this.usuarios) {
                 let conteudo = this.usuarios[usuario];
                 stream.write(`${conteudo.codigo};${conteudo.nome}\n`);
@@ -52,7 +52,8 @@ class PlataformaDigital {
             stream.write('\n\n');
             for (let produto in this.produtosCadastrados){
                 let conteudo = this.produtosCadastrados[produto];
-                stream.write(`${conteudo.nome};${conteudo.tipo};${conteudo.duracao};${conteudo.genero};`);
+                let aux = conteudo.getProdutorNome(this.usuarios).join();
+                stream.write(`${conteudo.nome};${conteudo.tipo};${aux};${conteudo.duracao};${conteudo.genero};`);
                 switch(conteudo.tipo){
                     case 'M':
                         stream.write(`;${conteudo.album};${conteudo.anoLancamento}\n`);

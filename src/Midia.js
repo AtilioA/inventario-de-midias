@@ -142,6 +142,18 @@ class Midia {
             it.adicionadoAosFavoritos();
         }
     }
+
+    getProdutorNome(produtores){
+        var produtor = [];
+        for (let i in this.produtor){
+            for (let j in produtores){
+                if (produtores[j].codigo === this.produtor[i].getCodigo()){
+                    produtor.push(this.produtor[i].getNome());
+                }
+            }
+        }
+        return produtor;
+    }
 }
 
 module.exports = Midia;
