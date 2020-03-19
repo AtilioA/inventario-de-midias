@@ -4,7 +4,7 @@ console.log("Hello, Triple Acento!");
 
 var argumentos = process.argv.slice(2);
 if (argumentos.length != 8) {
-    console.log("Número incorreto de argumentos. Encerrando execução.")
+    console.log("Número incorreto de argumentos. Encerrando execução.");
     process.exit(-1);
 }
 console.log(`Argumentos: [${argumentos}]`);
@@ -79,6 +79,10 @@ console.log("Gerando relatório de backup...\n");
 spotifyzada.geraRelatorioBackup();
 // console.log("Relatório de backup OK!\n");
 
-console.log("Gerando relatório de favoritos...\n");
+//console.log("Gerando relatório de favoritos...\n");
 // // spotifyzada.geraRelatorioFavoritos();
 // console.log("Relatório de favoritos OK!\n");
+
+console.log("Gerando Midias por Produtores");
+spotifyzada.gerarMidiaPorProdutor();
+console.log("Midias por Produtores OK!\n");

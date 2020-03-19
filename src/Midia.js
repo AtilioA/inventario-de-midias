@@ -71,7 +71,7 @@ class Genero {
 }
 
 class Midia {
-    static qtdProdutos = 0;
+    static qtdProdutos = 0; // o eslint q se foda vai ficar assim e pronto
 
     constructor(tipo, nome, codigo, genero, duracao, ano, ti) {
         this.anoLancamento = ano;

@@ -43,7 +43,7 @@ class PlataformaDigital {
     geraRelatorioBackup() {
         // console.log(this.usuarios);
         var stream = fs.createWriteStream("backup.txt");
-        stream.once('open', (fd) => {
+        stream.once('open', () => {
             //laço que varre usuarios e formata no padrão do backup
             for (let usuario in this.usuarios) {
                 let conteudo = this.usuarios[usuario];
@@ -58,7 +58,7 @@ class PlataformaDigital {
                         stream.write(`;${conteudo.album};${conteudo.anoLancamento}\n`);
                         break;
                     case 'P':
-                        stream.write(`${conteudo.temporada};;${conteudo.anoLancamento}\n`);
+                        stream.write(`${conteudo.qtdTemporadas};;${conteudo.anoLancamento}\n`);
                        break;
                 }
             }
@@ -79,8 +79,6 @@ class PlataformaDigital {
         generosCSV.pop();
 
         // generosCSV agora possui apenas os gêneros a serem cadastrados
-        var siglasGeneros = [];
-        var nomesGeneros = [];
         var i = 0;
         for (i in generosCSV) {
             var separaLinha = generosCSV[i].split(";");
@@ -107,10 +105,9 @@ class PlataformaDigital {
         usuariosCSV.pop();
 
         // usuariosCSV agora possui apenas os usuários a serem cadastrados
-        var usuarios = [];
         for (usuario in usuariosCSV) {
             var separaLinha = usuariosCSV[usuario].split(';');
-            var id = separaLinha[0]
+            var id = separaLinha[0];
             var tipo = separaLinha[1];
             var nome = separaLinha[2];
 
@@ -118,10 +115,15 @@ class PlataformaDigital {
             switch(tipo) {
                 case "A":
                     usuario = new Artista(nome, id);
+                    this.produtoresCadastrados.push(usuario);
+                    break;
                 case "P":
                     usuario = new Podcaster(nome, id);
+                    this.produtoresCadastrados.push(usuario);
+                    break;
                 case "U":
                     usuario = new Assinante(nome, id);
+                    break;
             }
 
             this.usuarios.push(usuario);
@@ -131,7 +133,7 @@ class PlataformaDigital {
     imprimeUsuarios() {
         var i = 0;
         for (i in this.usuarios) {
-            console.log(`${this.usuarios[i].getCodigo()};${this.usuarios[i].getNome()}`)
+            console.log(`${this.usuarios[i].getCodigo()};${this.usuarios[i].getNome()}`);
         }
     }
 
@@ -151,13 +153,14 @@ class PlataformaDigital {
         // favoritosCSV agora possui apenas os gêneros a serem cadastrados
         var codigosFavoritos = [];
         var midiasFavoritadas = [];
-        for (favorito in favoritosCSV) {
+        for (var favorito in favoritosCSV) {
             var separaLinha = favoritosCSV[favorito].split(";");
             codigosFavoritos.push(separaLinha[0]);
             midiasFavoritadas.push(separaLinha[1].split(","));
-            for (midiaFavoritada in midiasFavoritadas) {
+            /*
+            for (var midiaFavoritada in midiasFavoritadas) {
                 // oi;
-            }
+            }*/
         }
         console.log(codigosFavoritos);
         console.log(midiasFavoritadas);
@@ -180,7 +183,15 @@ class PlataformaDigital {
             let id = separaLinha[0].trim();
             let nome = separaLinha[1].trim();
             let tipo = separaLinha[2].trim();
-            let produtores = (separaLinha[3].trim()).split(',');
+            let produtoresStr = (separaLinha[3].trim()).split(',');
+            let produtores = [];
+            for(let prods of produtoresStr){
+                for(let cadastrado of this.produtoresCadastrados){
+                    if(cadastrado.getCodigo() === prods.trim()){
+                        produtores.push(cadastrado);
+                    }
+                }
+            }
             let duracao = separaLinha[4].trim();
             duracao = duracao.replace(',', '.');
             let genero = separaLinha[5].trim();
@@ -188,7 +199,7 @@ class PlataformaDigital {
                 genero = (genero.split(','))[0];
             }
             let temporada = separaLinha[6].trim();
-            let album = separaLinha[7].trim();
+            //let album = separaLinha[7].trim();
             let albumId = separaLinha[8].trim();
             let ano = separaLinha[9].trim();
             
@@ -217,8 +228,32 @@ class PlataformaDigital {
                     break;
             }
             produto.setProdutor(produtores);
+            for(let prods of produtores){
+                prods.inserirProduto(produto);
+            }
             this.produtosCadastrados.push(produto);
          }
+    }
+
+    gerarMidiaPorProdutor(){
+        var stream = fs.createWriteStream("2-produtores.csv");
+        stream.once('open', () => {
+            this.produtoresCadastrados.sort((a, b) => {
+                if(a.getNome() < b.getNome()){
+                    return -1;
+                }
+                return 1;
+            });
+            for(let prods of this.produtoresCadastrados){
+                stream.write(`${prods.getNome()};${prods.getProdutosDesenvolvidos().sort((a, b) => {
+                    if(a.getNome() < b.getNome()){
+                        return -1;
+                    }
+                    return 1;
+                }).map(elem => elem.getNome()).join(", ")}\n`);
+            }
+
+        });
     }
 }
 

@@ -31,6 +31,10 @@ class Produtor extends Usuario {
     setProdutosDesenvolvidos(produtosDesenvolvidos) {
         this.produtosDesenvolvidos = produtosDesenvolvidos;
     }
+
+    inserirProduto(produto){
+        this.produtosDesenvolvidos.push(produto);
+    }
 }
 
 module.exports = Produtor;
