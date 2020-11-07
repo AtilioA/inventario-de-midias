@@ -222,7 +222,7 @@ class PlataformaDigital {
                         return -1;
                     }
                     return 1;
-                }).map(elem => elem.getNome().replace(/(\r\n|\n|\r)/gm, "")).join(", ")}\n`);
+                }).map(elem => elem.getNome().replace(/(\r\n|\n|\r)/gm, "")).join(";")}\n`);
             }
 
         });
