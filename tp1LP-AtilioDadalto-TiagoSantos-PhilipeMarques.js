@@ -1,7 +1,5 @@
 const PlataformaDigital = require("./src/PlataformaDigital.js");
 
-console.log("Hello, Triple Acento!");
-
 var argumentos = process.argv.slice(2);
 if (argumentos.length != 8) {
     console.log("Número incorreto de argumentos. Encerrando execução.");
@@ -49,7 +47,6 @@ for (var i = 0; argumentos[i]; i++) {
 var spotifyzada = new PlataformaDigital();
 console.log("\nPlataforma digital criada.");
 
-
 console.log("\nCarregando gêneros...");
 spotifyzada.leArquivoGeneros(arquivoGeneros);
 console.log("Gêneros OK!\n");
@@ -60,29 +57,16 @@ spotifyzada.leArquivoUsuarios(arquivoUsuarios);
 console.log("Usuários OK!\n");
 spotifyzada.imprimeUsuarios();
 
-// console.log("\nProdutores:\n");
-// spotifyzada.imprimeProdutores();
 console.log("\nCarregando mídias...\n");
 spotifyzada.leArquivoMidias(arquivoMidias);
-// console.log("Mídias OK!\n");
+console.log("Mídias OK!\n");
 
-console.log("Carregando favoritos...\n");
-// // spotifyzada.carregaArquivoFavoritos(fileFavs);
-// console.log("Favoritos OK!\n");
-
-// console.log("\nQuantidade de mídias: " Midia::qtdProdutos "\n");
-// console.log("Tempo total: " // spotifyzada.tempoConsumido() " minutos.\n");
-
-// console.log("Relatório de estatísticas OK!\n");
+console.log("Relatório de estatísticas OK!\n");
 
 console.log("Gerando relatório de backup...\n");
 spotifyzada.geraRelatorioBackup();
-// console.log("Relatório de backup OK!\n");
+console.log("Relatório de backup OK!\n");
 
-//console.log("Gerando relatório de favoritos...\n");
-// // spotifyzada.geraRelatorioFavoritos();
-// console.log("Relatório de favoritos OK!\n");
-
-console.log("Gerando Midias por Produtores");
-spotifyzada.gerarMidiaPorProdutor();
+console.log("Gerando relatório de mídias por Produtores");
+spotifyzada.geraRelatorioMidiaPorProdutor();
 console.log("Midias por Produtores OK!\n");

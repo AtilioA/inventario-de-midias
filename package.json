@@ -1,10 +1,10 @@
 {
   "name": "inventario-de-midias",
   "version": "1.0.0",
-  "description": "1º trabalho da disciplina Linguagens de Programação (2020/1)",
+  "description": "1º trabalho da disciplina Linguagens de Programação (2020/1E)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "exec": "node tp1LP-AtilioDadalto-TiagoSantos-PhilipeMarques.js -f entradas/favoritos.csv -g entradas/generos.csv -m entradas/midias_corrigidas.csv -u entradas/usuarios.csv"
   },
   "repository": {
     "type": "git",

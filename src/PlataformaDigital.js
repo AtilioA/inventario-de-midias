@@ -138,46 +138,17 @@ class PlataformaDigital {
         }
     }
 
-    leArquivoFavoritos(caminhoArquivoFavorito) {
-        // TODO? - encontrar e ignorar favoritos repetidos, inserir favoritos
-
-        // Cria string ao ler arquivo CSV local
-        var favoritosCSV = fs.readFileSync(caminhoArquivoFavorito, 'utf8');
-
-        // Separa string do csv em quebras de linha
-        favoritosCSV = favoritosCSV.split("\n");
-
-        // Remove primeiro (header do csv) e último elemento (\n)
-        favoritosCSV.shift();
-        favoritosCSV.pop();
-
-        // favoritosCSV agora possui apenas os gêneros a serem cadastrados
-        var codigosFavoritos = [];
-        var midiasFavoritadas = [];
-        for (var favorito in favoritosCSV) {
-            var separaLinha = favoritosCSV[favorito].split(";");
-            codigosFavoritos.push(separaLinha[0]);
-            midiasFavoritadas.push(separaLinha[1].split(","));
-            /*
-            for (var midiaFavoritada in midiasFavoritadas) {
-                // oi;
-            }*/
-        }
-        console.log(codigosFavoritos);
-        console.log(midiasFavoritadas);
-    }
-
     leArquivoMidias(caminhoArquivoMidia){
          // Cria string ao ler arquivo CSV local
          var midiasCSV = fs.readFileSync(caminhoArquivoMidia, 'utf8');
 
          // Separa string do csv em quebras de linha
          midiasCSV = midiasCSV.split("\n");
- 
+
          // Remove primeiro (header do csv) e último elemento (\n)
          midiasCSV.shift();
          midiasCSV.pop();
- 
+
          // midiasCSV agora possui apenas os usuários a serem cadastrados
          for (let index in midiasCSV){
             let separaLinha = midiasCSV[index].split(';');
@@ -203,7 +174,7 @@ class PlataformaDigital {
             //let album = separaLinha[7].trim();
             let albumId = separaLinha[8].trim();
             let ano = separaLinha[9].trim();
-            
+
             var produto;
             switch (tipo){
                 case 'P':
@@ -236,7 +207,7 @@ class PlataformaDigital {
          }
     }
 
-    gerarMidiaPorProdutor(){
+    geraRelatorioMidiaPorProdutor(){
         var stream = fs.createWriteStream("2-produtores.csv");
         stream.once('open', () => {
             this.produtoresCadastrados.sort((a, b) => {
