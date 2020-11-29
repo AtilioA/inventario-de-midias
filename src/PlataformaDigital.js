@@ -214,10 +214,7 @@ class PlataformaDigital {
     var stream = fs.createWriteStream("2-produtores.csv");
     stream.once("open", () => {
       this.produtoresCadastrados.sort((a, b) => {
-        if (a.getNome() < b.getNome()) {
-          return -1;
-        }
-        return 1;
+        return (a.getNome().localeCompare(b.getNome()))
       });
       for (let prods of this.produtoresCadastrados) {
         stream.write(
